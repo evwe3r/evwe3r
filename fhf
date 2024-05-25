@@ -1,0 +1,18 @@
+
+    
+    # for 循环遍历每个信息，并将其存储到字典中
+    for rank, title, time in zip(ranks, titles, times):
+        data = {
+            "rank": rank.get_text().strip(),  # 歌曲排名
+            "singer": title.get_text().replace("\n", "").replace("\t", "").split('-')[1],  # 歌手名
+            "song": title.get_text().replace("\n", "").replace("\t", "").split('-')[0],  # 歌曲名
+            "time": time.get_text().strip()  # 歌曲时长
+        }
+        print(data)  # 打印获取到的信息
+ 
+if __name__ == '__main__':
+    urls = ["https://www.kugou.com/yy/rank/home/{}-8888.html".format(str(i)) for i in range(1, 24)]
+    # 构造要爬取的页面地址列表
+    for url in urls:
+        get_info(url)  # 调用函数，获取页面信息
+        time.sleep(1)  # 控制爬虫速度，防止过快被封IP
