@@ -1,0 +1,20 @@
+import requests  # 发送网络请求，获取 HTML 等信息
+from bs4 import BeautifulSoup  # 解析 HTML 信息，提取需要的信息
+import time  # 控制爬虫速度，防止过快被封IP
+ 
+ 
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
+    # 添加浏览器头部信息，模拟请求
+}
+ 
+def get_info(url):
+    # 参数 url ：要爬取的网页地址
+    web_data = requests.get(url, headers=headers)  # 发送网络请求，获取 HTML 等信息
+    soup = BeautifulSoup(web_data.text, 'lxml')  # 解析 HTML 信息，提取需要的信息
+ 
+    # 通过 CSS 选择器定位到需要的信息
+    ranks = soup.select('span.pc_temp_num')
+    titles = soup.select('div.pc_temp_songlist > ul > li > a')
+    times = soup.select('span.pc_temp_tips_r > span')
+    
