@@ -1,0 +1,17 @@
+//调用后端接口获取配置参数
+uni.request({
+  url: '后端接口地址,获取验证配置',
+  method: 'POST',
+  data: { 传入接口需要的参数,如页面路径url },
+  success({data}) {
+    //注入权限验证配置
+    jWeixin.config({
+      debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。（测试记得关掉）
+      appId: data.appId, // 公众号的唯一标识
+      timestamp: data.timestamp, // 生成签名的时间戳
+      nonceStr: data.nonceStr, // 生成签名的随机串
+      signature: data.signature, // 签名
+      jsApiList: ['chooseWXPay'], // JS接口列表
+    })
+  }
+})
