@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理</title>
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
+    <!-- 引入 Chart.js 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/plugins/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.basictable.min.js"></script>
+    <script type="text/javascript" src="../static/js/reponsetable.min.js"></script>
+    <script type="text/javascript" src="../static/plugins/layer/layer.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/plugins/layer/theme/default/layer.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/reponse.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
+    <style type="text/css">
+        .alertceng {
+            background: #FFFFFF;
+            padding: 10px;
+            display: none;
+        }
+ 
+        .alertceng span.title {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid layadmin-homepage-fluid" style="background: #fff;width:90%;margin:0 auto;">
+    <div id="page">
+        <h1>学生成绩信息管理</h1>
+        <table id="table" class="reponsetable"></table>
+        <script type="text/html" id="editer">
+            <a class="layui-btn layui-btn-xs" onclick="scatterPlot(this)">散点图</a>
+            <a class="layui-btn layui-btn-xs" onclick="radarChart(this)">雷达图</a>
+            <a class="layui-btn layui-btn-xs" onclick="careerPlan(this)">职业规划</a>
+            <a class="layui-btn layui-btn-xs" onclick="edittr(this)">修改</a>
+            <a class="layui-btn layui-btn-xs" onclick="deleteRecord(this)">删除</a>
+        </script>
+        <div class="btn-container">
+            <button class="layui-btn" onclick="addNew();">新增信息</button>
+        </div>
+    </div>
+</div>
+<div id="editcontent" class="alertceng">
+    <p><span class="title">姓名:</span><input type="text" id="name"/></p>
+    <p><span class="title">成绩1:</span><input type="text" id="g1"/></p>
+    <p><span class="title">成绩2:</span><input type="text" id="g2"/></p>
+    <p><span class="title">成绩3:</span><input type="text" id="g3"/></p>
+    <p><span class="title">成绩4:</span><input type="text" id="g4"/></p>
+    <p><span class="title">成绩5:</span><input type="text" id="g5"/></p>
+    <p><span class="title">成绩6:</span><input type="text" id="g6"/></p>
+    <button id="saveBtn">保存</button>
+    <button id="cancelBtn">取消</button>
+</div>
+ 
+
+
+</body>
+</html>
