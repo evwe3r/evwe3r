@@ -1,0 +1,40 @@
+    if (global.isObject(row)) {
+      if (game_id) {
+        // 五子棋消息
+        res.game_content = row;
+      } else {
+        // im有新消息
+        res.content = row;
+      }
+    }
+
+    sockets.forEach((item) => {
+      let socket = allSocket[item];
+
+      if (socket) {
+        resMsg(res, 200, "room_baseinfo", socket);
+      }
+    });
+  }
+
+  // 获取当前时间戳
+  function getCurrentTimer() {
+    return Date.now();
+  }
+
+  // 统一返回消息
+  function resMsg(msg, code = 400, name = "err", _socket) {
+    let obj = {
+      code,
+    };
+    if (code === 200) {
+      obj.msg = "操作成功";
+      obj.data = msg;
+    } else {
+      obj.msg = msg;
+    }
+
+    socket = _socket ? _socket : socket;
+    socket.emit(name, obj);
+  }
+});
