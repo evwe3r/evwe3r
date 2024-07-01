@@ -1,0 +1,39 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include<QLabel>
+#include<QTimer>
+#include<QTime>
+#include<QProcess>
+#include "menubutton.h"
+#include <QScreen>
+#include<QFont>
+ 
+/*
+ * 作者：混分巨兽龙某某
+ * csdn：混分巨兽龙某某
+ * 邮箱：1178305328@qq.com
+ * 嵌入式技术交流群：958820627
+ */
+ 
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+{
+    /* 布局初始化 */
+    layoutInit();
+}
+ 
+/* 析构函数 */
+MainWindow::~MainWindow()
+{
+ 
+}
+ 
+/* 屏幕布局初始化 */
+void MainWindow::layoutInit()
+{
+    /* 获取屏幕的分辨率，Qt官方建议使用这
+    * 种方法获取屏幕分辨率，防上多屏设备导致对应不上
+    * 注意，这是获取整个桌面系统的分辨率
+    */
+    QList <QScreen *> list_screen = QGuiApplication::screens();
+ 
